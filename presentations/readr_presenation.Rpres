@@ -5,6 +5,9 @@ date:
 autosize: true
 width: 1440
 height: 900
+<div align="center">
+<img src="readr_hex.png" width=500 height=500>
+</div>
 
 ```{r setup, echo=FALSE}
 knitr::opts_knit$set(root.dir = '../')

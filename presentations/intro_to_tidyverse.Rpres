@@ -3,7 +3,11 @@ Introduction  to the tidyverse
 author: Eric Pedersen and Keith Lewis
 date: September 28, 2017
 autosize: true
-
+width: 1440
+height: 900
+<div align="center">
+<img src="tidyverse_hex.jpeg" width=500 height=500>
+</div>
 ```{r setup, echo=FALSE}
 knitr::opts_knit$set(root.dir = '../')
 ```
