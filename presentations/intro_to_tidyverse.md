@@ -77,6 +77,20 @@ incremental: true
 ```
 
 
+Question:
+==============================================
+
+What would be needed to make this data set tidy?
+
+
+```
+ year eggs_200m juv_200m eggs_500m juv_500m
+ 2005        10       20        20        2
+ 2007        20        4         0        1
+ 2009         2       12        37        4
+```
+
+
 What is the Tidyverse?
 ========================================================
 incremental: true 
@@ -88,20 +102,13 @@ incremental: true
   * Let you refer to the columns in that data frame by name
   * Return a data frame
 
-***
+
 
 What is the Tidyverse?
 ========================================================
-incremental: false 
+incremental: true
 
-* R packages for working with tidy data
-* Workflow based on functions that:
-  * Are all simple verbs that do one thing (arrange, mutate, summarize, etc.)
-  * Take a data frame as their first argument
-  * Let you refer to the columns in that data frame by name
-  * Return a data frame
 
-***
 
 ![](hadley.jpg) 
 

@@ -81,6 +81,23 @@ tidy_data
 ```
 
 
+Question:
+==============================================
+
+What would be needed to make this data set tidy?
+
+```{r tidyexample3, echo=FALSE}
+
+untidy_data2 = data.frame(year = c(2005,2007,2009),
+                          eggs_200m = c(10,20,2),
+                          juv_200m = c(20,4,12),
+                          eggs_500m = c(20,0,37),
+                          juv_500m = c(2,1,4))
+print(untidy_data2,row.names=F)
+
+```
+
+
 What is the Tidyverse?
 ========================================================
 incremental: true 
@@ -92,20 +109,13 @@ incremental: true
   * Let you refer to the columns in that data frame by name
   * Return a data frame
 
-***
+
 
 What is the Tidyverse?
 ========================================================
-incremental: false 
+incremental: true
 
-* R packages for working with tidy data
-* Workflow based on functions that:
-  * Are all simple verbs that do one thing (arrange, mutate, summarize, etc.)
-  * Take a data frame as their first argument
-  * Let you refer to the columns in that data frame by name
-  * Return a data frame
 
-***
 
 ![](hadley.jpg) 
 
