@@ -27,9 +27,10 @@ write_csv(dune.env,path = "data/dune.env.csv")
 strata_locations = st_read("data/strata_boundaries/all_strata.shp") %>%
   mutate(strata = as.character(strata)) 
 
-trawl_data = read_csv("data/dfo_SURVEYS_text.csv")  %>%
+trawl_data = read_csv("data/dfo_SURVEYS_text.csv",
+                      col_types = cols(Depth="d"))  %>%
   st_as_sf(coords = c("LONG_DEC", "LAT_DEC"),
-           crs = st_crs(strata),
+           crs = st_crs(strata_locations),
            remove=F) %>%
   st_join(strata_locations) %>%
   filter(!is.na(strata), 
