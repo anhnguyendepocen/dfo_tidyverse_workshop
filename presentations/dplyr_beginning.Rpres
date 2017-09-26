@@ -1,0 +1,64 @@
+dplyr basics: filtering, selecting, grouping, and connecting tibbles
+========================================================
+author: 
+date: 
+autosize: true
+width: 1440
+height: 900
+<div align="center">
+<img src="dplyr_hex.png" width=500 height=500>
+</div>
+
+```{r setup, echo=FALSE}
+knitr::opts_knit$set(root.dir = '../')
+library(readr)
+library(knitr)
+```
+
+
+
+What is dplyr?
+==============
+incremental: true
+Manipulates data within a data frame
+
+Basic verbs: 
+* group_by
+* filter
+* select
+* join
+* mutate
+* summarize
+
+
+What is dplyr?
+==============
+Manipulates data within a data frame
+
+Basic verbs: 
+* **group_by**
+* **filter**
+* **select**
+* **join**
+* mutate
+* summarize
+
+Starting up:
+========================================================
+To make sure everyone's on the same page, run this block of code:
+
+```{r startup}
+library(readr)
+library(tidyr)
+library(dplyr)
+
+
+dune_env = read_csv("data/dune.env.csv")
+
+dune_counts = read_csv("data/dune.csv") %>%
+  gather(key = species,value = count, Achimill:Callcusp)
+
+head(dune_counts,n = 3)
+
+
+```
