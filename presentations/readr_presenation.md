@@ -49,7 +49,7 @@ A simple example
 
 
 ```r
-dune_sp_data = read_csv("data/dune.csv")
+dune_sp = read_csv("data/dune.csv")
 ```
 
 ```
@@ -65,7 +65,7 @@ See spec(...) for full column specifications.
 ```
 
 ```r
-dune_env_data = read_csv("data/dune.env.csv")
+dune_env = read_csv("data/dune.env.csv")
 ```
 
 ```
@@ -87,7 +87,7 @@ A simple example
 
 
 ```r
-head(dune_sp_data) 
+head(dune_sp) 
 ```
 
 ```
@@ -115,7 +115,7 @@ A simple example
 
 
 ```r
-head(dune_env_data)
+head(dune_env)
 ```
 
 ```
@@ -162,7 +162,7 @@ incremental: true
 
 
 ```r
-dune_env_data = read_csv("data/dune.env.csv",
+dune_env = read_csv("data/dune.env.csv",
                          guess_max=5000)
 ```
 
@@ -174,7 +174,7 @@ dune_env_data = read_csv("data/dune.env.csv",
 
 
 ```r
-dune_env_data = read_csv("data/dune.env.csv",
+dune_env = read_csv("data/dune.env.csv",
                          col_types = cols(Moisture = "d"))
 ```
 
@@ -218,7 +218,7 @@ Specifying NA values:
 
 
 ```r
-dune_env_data = read_csv("data/dune.env.csv",
+dune_env = read_csv("data/dune.env.csv",
                          na = c("NA","."))
 ```
 

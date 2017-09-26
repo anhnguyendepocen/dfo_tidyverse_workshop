@@ -55,8 +55,8 @@ A simple example
 #Loading the dune data
 ```
 ```{r load_dune,message=TRUE}
-dune_sp_data = read_csv("data/dune.csv")
-dune_env_data = read_csv("data/dune.env.csv")
+dune_sp = read_csv("data/dune.csv")
+dune_env = read_csv("data/dune.env.csv")
 ```
 
 
@@ -68,7 +68,7 @@ A simple example
 #Viewing the dune data set
 ```
 ```{r show_dune,message=TRUE}
-head(dune_sp_data) 
+head(dune_sp) 
 ```
 
 
@@ -76,7 +76,7 @@ A simple example
 ========================================================
 
 ```{r show_dune2, message=TRUE}
-head(dune_env_data)
+head(dune_env)
 ```
 
 
@@ -123,7 +123,7 @@ incremental: true
 ```
 
 ```{r dune_col_types1, message=FALSE}
-dune_env_data = read_csv("data/dune.env.csv",
+dune_env = read_csv("data/dune.env.csv",
                          guess_max=5000)
 ```
 
@@ -137,7 +137,7 @@ dune_env_data = read_csv("data/dune.env.csv",
 ```
 
 ```{r dune_col_types2, message=FALSE}
-dune_env_data = read_csv("data/dune.env.csv",
+dune_env = read_csv("data/dune.env.csv",
                          col_types = cols(Moisture = "d"))
 ```
 
@@ -188,7 +188,7 @@ Specifying NA values:
 
 
 ```{r readr_na}
-dune_env_data = read_csv("data/dune.env.csv",
+dune_env = read_csv("data/dune.env.csv",
                          na = c("NA","."))
 ```
 
