@@ -9,10 +9,10 @@ library(dplyr)
 
 dune_env = read_csv("data/dune.env.csv")
 
-dune_counts = read_csv("data/dune.csv") %>%
-  gather(key = species,value = count, Achimill:Callcusp)
+dune_cover = read_csv("data/dune.csv") %>%
+  gather(key = species,value = cover_class, Achimill:Callcusp)
 
-head(dune_counts,n = 3)
+head(dune_cover,n = 3)
 
 trawl_abiotic = read_csv("data/trawl_abiotic.csv",col_types = cols(depth="d"))
 
@@ -22,7 +22,7 @@ trawl_biomass = read_csv("data/trawl_biomass.csv")%>%
 head(trawl_biomass, n=3)
 
 #Trying joins and select on the dune data
-dune_moisture = dune_counts %>%
+dune_moisture = dune_cover %>%
   left_join(dune_env) %>%
   select(site, species, count, Moisture)
 

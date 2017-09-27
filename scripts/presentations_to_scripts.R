@@ -16,11 +16,14 @@ convert_pres_to_script = function(input_path, output_path){
 
 
 convert_pres_to_script(input_path = "presentations/intro_to_tidyverse.Rpres",
-                       output_path = "scripts/intro_to_tidyverse.R")
+                       output_path = "scripts/1. intro_to_tidyverse.R")
                        
 convert_pres_to_script(input_path = "presentations/readr_presenation.Rpres",
-                       output_path = "scripts/readr_script.R")
+                       output_path = "scripts/2. readr_script.R")
 
+convert_pres_to_script(input_path = "presentations/tidyverse-KL.Rpres",
+                       output_path = "scripts/3. tidyr_and_pipes.R")
 
 convert_pres_to_script(input_path = "presentations/dplyr_beginning.Rpres",
-                       output_path = "scripts/dplyr_part1_script.R")
+                       output_path = "scripts/4. dplyr_part1_script.R")
+
