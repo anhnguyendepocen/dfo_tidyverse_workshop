@@ -24,7 +24,7 @@ head(trawl_biomass, n=3)
 #Trying joins and select on the dune data
 dune_moisture = dune_cover %>%
   left_join(dune_env) %>%
-  select(site, species, count, Moisture)
+  select(site, species, cover_class, Moisture)
 
 head(dune_moisture)
 

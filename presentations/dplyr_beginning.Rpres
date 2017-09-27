@@ -123,7 +123,7 @@ incremental: true
 ```{r mergedune}
 dune_moisture = dune_cover %>%
   left_join(dune_env) %>%
-  select(site, species, count, Moisture)
+  select(site, species, cover_class, Moisture)
 
 head(dune_moisture)
 ```

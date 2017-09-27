@@ -130,55 +130,130 @@ incremental: true
 
 
 
+```r
+dune_moisture = dune_cover %>%
+  left_join(dune_env) %>%
+  select(site, species, cover_class, Moisture)
 
-
-
-
-
-
-
-
-
+head(dune_moisture)
+```
 
 ```
-processing file: dplyr_beginning.Rpres
-
-Attaching package: 'dplyr'
-
-The following objects are masked from 'package:stats':
-
-    filter, lag
-
-The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union
-
-Parsed with column specification:
-cols(
-  site = col_character(),
-  A1 = col_double(),
-  Moisture = col_integer(),
-  Management = col_character(),
-  Use = col_character(),
-  Manure = col_integer()
-)
-Parsed with column specification:
-cols(
-  .default = col_integer(),
-  site = col_character()
-)
-See spec(...) for full column specifications.
-Parsed with column specification:
-cols(
-  year = col_integer(),
-  trawl_id = col_integer(),
-  shrimp = col_double(),
-  cod = col_double(),
-  halibut = col_double(),
-  redfish = col_double()
-)
-Joining, by = "site"
-Quitting from lines 124-129 (dplyr_beginning.Rpres) 
-Error: `count` must resolve to integer column positions, not a function
-Execution halted
+# A tibble: 6 x 4
+    site  species cover_class Moisture
+   <chr>    <chr>       <int>    <int>
+1 site_1 Achimill           1        1
+2 site_2 Achimill           3        1
+3 site_3 Achimill           0        2
+4 site_4 Achimill           0        2
+5 site_5 Achimill           2        1
+6 site_6 Achimill           2        1
 ```
+
+Exercise:
+=================================
+
+
+### using the trawl survey data:
+1. join the environmental data to biomass data set
+2. create a new tibble that only includes the year, species name, and bottom temperature
+3. create a second tibble that excludes longitude, latitude, and depth
+
+
+
+
+
+
+group_by(): grouping related observations
+============================
+incremental:true
+
+
+<div align="center">
+<img src="group_by.png" width=600>
+</div>
+
+* Does not change data
+* Grouping passes on to other verbs
+* undo it with ungroup(data)
+
+filter(): Filtering out observations based on values
+========================================================
+incremental:true
+
+<div align="center">
+<img src="filter.png" width=550>
+</div>
+
+* removes rows
+* keeps the number of columns and their values the same
+
+
+
+
+
+
+Using this on the dune data set
+=================================
+incremental: true
+
+
+
+Without grouping:
+
+
+```r
+dune_high_moisture = dune_moisture %>%
+  filter(Moisture > 3)
+
+head(dune_moisture) 
+```
+
+```
+# A tibble: 6 x 4
+    site  species cover_class Moisture
+   <chr>    <chr>       <int>    <int>
+1 site_1 Achimill           1        1
+2 site_2 Achimill           3        1
+3 site_3 Achimill           0        2
+4 site_4 Achimill           0        2
+5 site_5 Achimill           2        1
+6 site_6 Achimill           2        1
+```
+
+Using this on the dune data set
+=================================
+incremental: true
+
+
+With grouping:
+
+
+```r
+dune_moisture_tolerant = dune_moisture %>%
+  filter(Moisture>3) %>%
+  group_by(species) %>%
+  filter(mean(count)>2)
+
+head(dune_moisture_tolerant) 
+```
+
+```
+# A tibble: 0 x 4
+# Groups:   species [0]
+# ... with 4 variables: site <chr>, species <chr>, cover_class <int>,
+#   Moisture <int>
+```
+
+
+
+Exercise:
+=================================
+
+
+### using the joined the data set you created above:
+1. Create a new tibble that only includes trawls collected in NAFO division 2J,  and are deeper than 400 meters
+2. Create a new tibble, grouped by species and strata, that only includes observations taken after 2000 and have a maximum biomass greater than 1 kg.
+
+
+
