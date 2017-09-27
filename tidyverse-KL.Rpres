@@ -84,6 +84,21 @@ Help using tidyr()
 - demo(package = "tidyr")
 - cheatsheet (see RStudio -> Help -> Cheatsheets)
 
+Exercise:
+=======================================================
+
+Try: 
+- spreading the trawl_abiotic data Exercise:
+=======================================================
+
+Try: 
+- spreading the trawl_abiotic data (may want to subset or filter rows and reduce # of columns) 
+- gathering the trawl_biomass
+
+
+- gathering the trawl_biomass
+
+
 Pipes: easier programming, easier reading
 ========================================================
 
@@ -136,6 +151,12 @@ Help with pipes
 Tidyverse webiste: http://magrittr.tidyverse.org/
 
 "R for Data Science" http://r4ds.had.co.nz/pipes.html
+
+Exercise:
+=======================================================
+Try: 
+- use pipes to first subset the trawl_abiotic data and then spread
+- use pipes to first subset the trawl_biomass before gathering
 
 dplyr()
 ========================================================
@@ -204,3 +225,11 @@ dune.mutate[c("Achimill", "test")]
 Help dplyr
 ========================================================
 - cheatsheet (see RStudio -> Help -> Cheatsheets)
+
+Exercise:
+=======================================================
+
+Try: 
+- counting the number of categories in the trawl_biotic data (filter if you like) 
+- going to the cheat sheet and summarising or mutating the data
+
