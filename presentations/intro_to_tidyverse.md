@@ -117,7 +117,7 @@ incremental: true
 
 ![](hadley.jpg) 
 
-(although Hadley $\ne$ tidverse)
+(although Hadley $\ne$ tidyverse)
 
 
 The basic idea
