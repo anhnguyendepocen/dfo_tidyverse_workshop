@@ -20,3 +20,7 @@ convert_pres_to_script(input_path = "presentations/intro_to_tidyverse.Rpres",
                        
 convert_pres_to_script(input_path = "presentations/readr_presenation.Rpres",
                        output_path = "scripts/readr_script.R")
+
+
+convert_pres_to_script(input_path = "presentations/dplyr_beginning.Rpres",
+                       output_path = "scripts/dplyr_part1_script.R")

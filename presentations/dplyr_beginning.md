@@ -12,36 +12,12 @@ height: 900
 
 
 
-
-What is dplyr?
-==============
-incremental: true
-Manipulates data within a data frame
-
-Basic verbs: 
-* group_by
-* filter
-* select
-* join
-* mutate
-* summarize
-
-
-What is dplyr?
-==============
-Manipulates data within a data frame
-
-Basic verbs: 
-* **group_by**
-* **filter**
-* **select**
-* **join**
-* mutate
-* summarize
-
 Starting up:
 ========================================================
 To make sure everyone's on the same page, run this block of code:
+
+
+
 
 
 ```r
@@ -66,3 +42,224 @@ head(dune_counts,n = 3)
 2 site_2 Achimill     3
 3 site_3 Achimill     0
 ```
+
+
+
+Starting up:
+========================================================
+To make sure everyone's on the same page, run this block of code:
+
+
+
+```r
+trawl_abiotic = read_csv("data/trawl_abiotic.csv",col_types = cols(depth="d"))
+
+trawl_biomass = read_csv("data/trawl_biomass.csv")%>%
+  gather(key = species, value = biomass, shrimp:redfish)
+
+head(trawl_biomass, n=3)
+```
+
+```
+# A tibble: 3 x 4
+   year trawl_id species biomass
+  <int>    <int>   <chr>   <dbl>
+1  1995        1  shrimp   62.39
+2  1995        2  shrimp   29.86
+3  1995        3  shrimp   46.04
+```
+
+
+
+What is dplyr?
+==============
+incremental: true
+Manipulates data within a data frame
+
+Basic verbs: 
+* select
+* join
+* group_by
+* filter
+* mutate
+* summarize
+
+
+What is dplyr?
+==============
+Manipulates data within a data frame
+
+Basic verbs: 
+* **select**
+* **join**
+* **group_by**
+* **filter**
+* mutate
+* summarize
+
+
+
+
+select(): Removing columns
+========================================================
+incremental: true
+
+<div align="center">
+<img src="select.png" width=550>
+</div>
+
+* Removes columns
+* Can use just column names to keep, column names to remove
+* Can also use ranges of either (`select(data, A:C)`, `select(data, -(C:D)`)
+
+
+left_join(): Adds columns from one data frame to another
+========================================================
+
+
+<div align="center">
+<img src="left_join.png" width=550>
+</div>
+
+
+Using this on the dune data set
+=================================
+incremental: true
+
+
+
+
+
+```r
+dune_moisture = dune_counts %>%
+  left_join(dune_env) %>%
+  select(site, species, count, Moisture)
+
+head(dune_moisture)
+```
+
+```
+# A tibble: 6 x 4
+    site  species count Moisture
+   <chr>    <chr> <int>    <int>
+1 site_1 Achimill     1        1
+2 site_2 Achimill     3        1
+3 site_3 Achimill     0        2
+4 site_4 Achimill     0        2
+5 site_5 Achimill     2        1
+6 site_6 Achimill     2        1
+```
+
+Exercise:
+=================================
+
+
+### using the trawl survey data:
+1. join the environmental data to biomass data set
+2. create a new tibble that only includes the year, species name, and bottom temperature
+3. create a second tibble that excludes longitude, latitude, and depth
+
+
+
+
+
+
+group_by(): grouping related observations
+============================
+incremental:true
+
+
+<div align="center">
+<img src="group_by.png" width=600>
+</div>
+
+* Does not change data
+* Grouping passes on to other verbs
+* undo it with ungroup(data)
+
+filter(): Filtering out observations based on values
+========================================================
+incremental:true
+
+<div align="center">
+<img src="filter.png" width=550>
+</div>
+
+* removes rows
+* keeps the number of columns and their values the same
+
+
+
+
+
+
+Using this on the dune data set
+=================================
+incremental: true
+
+
+
+Without grouping:
+
+
+```r
+dune_high_moisture = dune_moisture %>%
+  filter(Moisture > 3)
+
+head(dune_moisture) 
+```
+
+```
+# A tibble: 6 x 4
+    site  species count Moisture
+   <chr>    <chr> <int>    <int>
+1 site_1 Achimill     1        1
+2 site_2 Achimill     3        1
+3 site_3 Achimill     0        2
+4 site_4 Achimill     0        2
+5 site_5 Achimill     2        1
+6 site_6 Achimill     2        1
+```
+
+Using this on the dune data set
+=================================
+incremental: true
+
+
+With grouping:
+
+
+```r
+dune_moisture_tolerant = dune_moisture %>%
+  filter(Moisture>3) %>%
+  group_by(species) %>%
+  filter(mean(count)>2)
+
+head(dune_moisture_tolerant) 
+```
+
+```
+# A tibble: 6 x 4
+# Groups:   species [1]
+     site  species count Moisture
+    <chr>    <chr> <int>    <int>
+1  site_8 Agrostol     4        5
+2  site_9 Agrostol     3        4
+3 site_12 Agrostol     4        4
+4 site_13 Agrostol     5        5
+5 site_14 Agrostol     4        5
+6 site_15 Agrostol     4        5
+```
+
+
+
+Exercise:
+=================================
+
+
+### using the joined the data set you created above:
+1. Create a new tibble that only includes trawls collected in NAFO division 2J,  and are deeper than 400 meters
+2. Create a new tibble, grouped by species and strata, that only includes observations taken after 2000 and have a maximum biomass greater than 1 kg.
+
+
+
