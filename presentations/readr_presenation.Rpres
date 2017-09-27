@@ -65,7 +65,7 @@ dune_env = read_csv("data/dune.env.csv")
 
 A simple example
 ========================================================
-
+incremental:true
 ```{r,results="hide",echo=FALSE}
 
 #Viewing the dune data set

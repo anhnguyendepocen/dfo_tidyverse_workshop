@@ -34,10 +34,10 @@ library(dplyr)
 
 dune_env = read_csv("data/dune.env.csv")
 
-dune_counts = read_csv("data/dune.csv") %>%
-  gather(key = species,value = count, Achimill:Callcusp)
+dune_cover = read_csv("data/dune.csv") %>%
+  gather(key = species,value = cover_class, Achimill:Callcusp)
 
-head(dune_counts,n = 3)
+head(dune_cover,n = 3)
 ```
 
 
@@ -121,7 +121,7 @@ incremental: true
 
 
 ```{r mergedune}
-dune_moisture = dune_counts %>%
+dune_moisture = dune_cover %>%
   left_join(dune_env) %>%
   select(site, species, count, Moisture)
 
