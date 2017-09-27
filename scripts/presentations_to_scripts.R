@@ -18,7 +18,7 @@ convert_pres_to_script = function(input_path, output_path){
 convert_pres_to_script(input_path = "presentations/intro_to_tidyverse.Rpres",
                        output_path = "scripts/1. intro_to_tidyverse.R")
                        
-convert_pres_to_script(input_path = "presentations/readr_presenation.Rpres",
+convert_pres_to_script(input_path = "presentations/readr_presentation.Rpres",
                        output_path = "scripts/2. readr_script.R")
 
 convert_pres_to_script(input_path = "presentations/tidyverse-KL.Rpres",

@@ -1,5 +1,3 @@
-library(readr)
-library(knitr)
 
 #Loading the packages and getting data ready
 library(readr)
