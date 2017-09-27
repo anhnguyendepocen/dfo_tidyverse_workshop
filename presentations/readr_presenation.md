@@ -86,7 +86,7 @@ cols(
 
 A simple example
 ========================================================
-
+incremental:true
 
 
 ```r

@@ -112,6 +112,7 @@ incremental: true
   * Take a data frame as their first argument
   * Let you refer to the columns in that data frame by name
   * Return a data frame
+  * **Play well with each other**
 
 
 
@@ -123,7 +124,7 @@ incremental: true
 
 ![](hadley.jpg) 
 
-(although Hadley $\ne$ tidverse)
+(although Hadley $\ne$ tidyverse)
 
 
 The basic idea

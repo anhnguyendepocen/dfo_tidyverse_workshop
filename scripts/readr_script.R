@@ -3,12 +3,12 @@
 library(readr)
 
 #Loading the dune data
-dune_sp_data = read_csv("data/dune.csv")
-dune_env_data = read_csv("data/dune.env.csv")
+dune_sp = read_csv("data/dune.csv")
+dune_env = read_csv("data/dune.env.csv")
 
 #Viewing the dune data set
-head(dune_sp_data) 
-head(dune_env_data)
+head(dune_sp) 
+head(dune_env)
 
 #### Exercise 1: 
 # In the data folder there are two data files:
@@ -20,11 +20,11 @@ head(dune_env_data)
 # 2. Identify the column types 
 
 # Increasing the number of rows used to guess:
-dune_env_data = read_csv("data/dune.env.csv",
+dune_env = read_csv("data/dune.env.csv",
                          guess_max=5000)
 
 # Specifying column types:
-dune_env_data = read_csv("data/dune.env.csv",
+dune_env = read_csv("data/dune.env.csv",
                          col_types = cols(Moisture = "d"))
 
 #### Exercise 2: 
@@ -32,5 +32,5 @@ dune_env_data = read_csv("data/dune.env.csv",
 
 
 # other useful options:
-dune_env_data = read_csv("data/dune.env.csv",
+dune_env = read_csv("data/dune.env.csv",
                          na = c("NA","."))
