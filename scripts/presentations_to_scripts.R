@@ -27,3 +27,5 @@ convert_pres_to_script(input_path = "presentations/tidyverse-KL.Rpres",
 convert_pres_to_script(input_path = "presentations/dplyr_beginning.Rpres",
                        output_path = "scripts/4. dplyr_part1_script.R")
 
+convert_pres_to_script(input_path = "presentations/full_presentation.Rpres",
+                       output_path = "scripts/tidyverse_full_script.R")
