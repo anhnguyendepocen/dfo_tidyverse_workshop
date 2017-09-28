@@ -28,56 +28,23 @@ What is tidyr?
 
 Why is it useful?
 Tidyr changes the fundamental format of the data
-- long data (long typical form)
-- wide data (easy for humans to read)
-
-How does it work?
-- Two fundamental tidying verbs:
-  - spread() = long to wide 
-  - gather() = wide to long 
-
-
-Comparing tidyr with similar functions from other software
-========================================================
-long to wide:
-- spreadsheets: pivot tables
-- databases: crosstab querries
+- long data (model based format)
+- wide data (tabular: easy for humans to read)
+- Similar to: 
+  - spreadsheets: pivot tables
+  - databases: crosstab querries
   
-tidyr also does wide to long!
 
-Example #1: gather() and spread() the dune_sp data 
+Long to wide: a closer look
 ========================================================
+![Long to Wide](Slide5.png)
 
 
 
 
 
-```r
-library(readr)
-library(tidyr)
-library(dplyr)
-library(vegan)
-```
-
-```r
-dune_sp = read_csv("data/dune.csv")
-```
-
-```
-Parsed with column specification:
-cols(
-  .default = col_integer(),
-  site = col_character()
-)
-```
-
-```
-See spec(...) for full column specifications.
-```
-
-```r
-dune_sp
-```
+Example: gather() and spread() the dune_sp data 
+========================================================
 
 ```
 # A tibble: 20 x 31
@@ -139,17 +106,12 @@ gather(dune_sp, key=species, value = "cover_class", Achimill:Callcusp)
 # ... with 590 more rows
 ```
 
-Example #2: The dune_env data 
-========================================================
-
 "Spread" the dune data
 ========================================================
 
-
-
-
 ```r
 dune_sp_gath <- gather(dune_sp, key=species, value = "cover_class", Achimill:Callcusp) 
+
 spread(dune_sp_gath, species, cover_class)
 ```
 
@@ -186,7 +148,7 @@ spread(dune_sp_gath, species, cover_class)
 #   Vicilath <int>
 ```
 
-"Spread" the dune_env data
+The dune_env data
 ========================================================
 
 ```r
@@ -219,6 +181,9 @@ dune_env
 19 site_19   3.7        5         NM Hayfield      0
 20 site_20   3.5        5         NM Hayfield      0
 ```
+
+"Spread" the dune_env data
+========================================================
 
 ```r
 spread(dune_env, Use, Moisture)
@@ -272,22 +237,18 @@ From UNIX
 
 Pipes make it easier to program and easier to read your code!
 
-Pipes move left-had side values forward
 - data operations become left-to-right
 - avoid nested function calls
 - make it easy to add steps in sequence of operations
 
 Code: "%>%"
 
-Examples #3 Pipes in action: spread data after subsetting
+Examples: Pipes in action: spread data after subsetting
 ========================================================
 
 
 
-
 ```r
-#spread(dune_env, Use, Moisture)
-# new object <- data %>% subset on a value %>% spread data
 dune_new <- dune_env %>%
   subset(Management == "HF") %>%
   spread(Use, Moisture)
@@ -322,20 +283,21 @@ summarize()
 ========================================================
 - Turns multiple rows into a single
 
-- with "group_by" ~ split-apply-combine
+![Long to Wide](Slide6.png)
 
 
-Exampe #4 summarise()
+
+
+Exampe: summarise()
 ========================================================
-
-
-
 
 ```r
 dune_long <- gather(dune_sp, key=species, value = "cover_class", Achimill:Callcusp) 
+
 dune_summary <- dune_long %>%
   group_by(species) %>%
   summarise(mean = mean(cover_class))
+
 dune_summary
 ```
 
@@ -356,11 +318,8 @@ dune_summary
 # ... with 20 more rows
 ```
 
-Exampe #4 summarise() continued
+Exampe: summarise() continued
 ========================================================
-
-
-
 
 
 ```r
@@ -388,13 +347,15 @@ dune_summary
 11         SF  Pasture     1
 ```
 
-
-Exampe #5 mutate() - Create a new variable
+mutate()
 ========================================================
+- creates new column from existing columns
+
+![Long to Wide](Slide7.png)
 
 
-
-
+Exampe: mutate() - Create a new variable
+========================================================
 
 ```r
 ## examples
@@ -430,10 +391,8 @@ dune_mutate[c("Achimill", "Agrostol", "sum_sp")]
 20        0        5      5
 ```
 
-Exampe #5 mutate() - Create a new variable continued
+Exampe: mutate() - Create a new variable continued
 ========================================================
-
-
 
 
 ```r
@@ -472,7 +431,7 @@ Exercise:
 =======================================================
 
 Try: 
-- counting the number of categories in the trawl_biotic data (filter if you like) 
+- counting the number of observations in each year in each nafo division 
 - going to the cheat sheet and pick 1-2 functions for summarising or mutating the data in the manner of your choice
 
 
@@ -484,6 +443,8 @@ For tidyr():
 - demo(package = "tidyr")
 - cheatsheet (see RStudio -> Help -> Cheatsheets)
 
+Help 
+========================================================
 For pipes:
 - Note: you don't HAVE to use pipes
 Tidyverse webiste: http://magrittr.tidyverse.org/
@@ -497,5 +458,7 @@ When not to use pipes (according to Hadley)
 
 - Complex graphs
 
+Help 
+========================================================
 For dplyr:
 - cheatsheet (see RStudio -> Help -> Cheatsheets)
